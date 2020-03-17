@@ -12,14 +12,16 @@ public class DataDrivenTest {
 	public static void main(String[] args) throws FileNotFoundException
 	{
 	
-		FileInputStream fi=new FileInputStream("C:/Jose/TestData.xlsx");
+		FileInputStream fi=new FileInputStream(System.getProperty("user.dir")+ "/src/test/java/resources/TestInputData.xlsx");
 		try {
 			XSSFWorkbook book=new XSSFWorkbook(fi);
 			XSSFSheet sheet=book.getSheetAt(0);
 			int rowCount=sheet.getLastRowNum();
 			int colCount=sheet.getRow(0).getLastCellNum();
+			
+			System.out.println(sheet.getRow(rowCount).getCell(0).getStringCellValue());
 			System.out.println(rowCount + ":"+ colCount);
-			for(int row=1;row<rowCount;row++)
+			for(int row=1;row<=rowCount;row++)
 			{
 				for(int col=0;col<colCount;col++)
 			{
